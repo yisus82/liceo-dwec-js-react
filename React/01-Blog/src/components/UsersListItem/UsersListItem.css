@@ -1,0 +1,17 @@
+.userLink {
+  display: block;
+  background-color: orange;
+  padding: 10px;
+  text-align: center;
+  margin: 10px auto;
+  max-width: 800px;
+}
+.userLink a {
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+.userLink a:hover {
+  text-decoration: underline;
+}

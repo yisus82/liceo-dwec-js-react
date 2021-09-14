@@ -1,0 +1,17 @@
+.postLink {
+  display: block;
+  background-color: orange;
+  padding: 10px;
+  text-align: center;
+  margin: 10px auto;
+  max-width: 800px;
+}
+.postLink a {
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+.postLink a:hover {
+  text-decoration: underline;
+}
