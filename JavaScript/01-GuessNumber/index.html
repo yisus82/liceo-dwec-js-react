@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess Number</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <p id="result"></p>
+    <form id="numberForm">
+      <input type="number" name="userNumber" id="userNumberField" placeholder="Enter number" />
+      <button id="submitButton" type="submit">Submit</button>
+      <button id="newButton" type="button">New number</button>
+    </form>
+    <div id="bottomContainer">
+      <div id="attemptsContainer">
+        <h2>List of attempts:</h2>
+        <ul id="attemptList"></ul>
+      </div>
+
+      <div id="optionContainer">
+        <h2>Options:</h2>
+        <label for="easy"
+          ><input type="radio" id="easy" name="options" value="easy" checked />1 - 10 (3
+          attempts)</label
+        >
+        <label for="easy"
+          ><input type="radio" id="medium" name="options" value="medium" />1 - 50 (5
+          attempts)</label
+        >
+        <button type="button" id="optionButton">Select option</button>
+      </div>
+    </div>
+    <script src="./js/guessNumber.js"></script>
+  </body>
+</html>

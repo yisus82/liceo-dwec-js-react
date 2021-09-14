@@ -1,0 +1,20 @@
+#newButton {
+  display: none;
+}
+
+#bottomContainer {
+  display: flex;
+}
+
+#attemptsContainer {
+  margin-right: 50px;
+}
+
+#optionContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 20px;
+}
