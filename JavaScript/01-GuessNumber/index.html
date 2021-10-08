@@ -7,11 +7,18 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <p id="result"></p>
+    <h1>Guess Number</h1>
+    <p id="message"></p>
     <form id="numberForm">
-      <input type="number" name="userNumber" id="userNumberField" placeholder="Enter number" />
+      <input
+        type="number"
+        name="userNumber"
+        id="userNumberField"
+        placeholder="Enter a number"
+        min="1"
+      />
       <button id="submitButton" type="submit">Submit</button>
-      <button id="newButton" type="button">New number</button>
+      <button id="newNumberButton" type="button">New number</button>
     </form>
     <div id="bottomContainer">
       <div id="attemptsContainer">
@@ -22,12 +29,10 @@
       <div id="optionContainer">
         <h2>Options:</h2>
         <label for="easy"
-          ><input type="radio" id="easy" name="options" value="easy" checked />1 - 10 (3
-          attempts)</label
+          ><input type="radio" id="easy" name="option" checked />1 - 10 (3 attempts)</label
         >
-        <label for="easy"
-          ><input type="radio" id="medium" name="options" value="medium" />1 - 50 (5
-          attempts)</label
+        <label for="medium"
+          ><input type="radio" id="medium" name="option" />1 - 50 (5 attempts)</label
         >
         <button type="button" id="optionButton">Select option</button>
       </div>
