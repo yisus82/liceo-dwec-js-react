@@ -1,1 +1,3 @@
-export { default } from './PostsList';
+import PostsList from './PostsList';
+
+export default PostsList;

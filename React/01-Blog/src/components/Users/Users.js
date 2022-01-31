@@ -1,15 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import UsersList from '../UsersList/UsersList';
+import { useEffect, useState } from 'react';
+import UsersList from '../UsersList';
 import './Users.css';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users').then((response) => response.json()).then(data => setUsers(data));
+    setLoading(true);
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(users => setUsers(users))
+      .then(() => setLoading(false));
   }, []);
 
-  return <UsersList users={users} />;
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+
+  return (
+    <>
+      <h2>Users</h2>
+      <div>{users.length === 0 ? <p>No users</p> : <UsersList users={users} />}</div>
+    </>
+  );
 };
 
 export default Users;

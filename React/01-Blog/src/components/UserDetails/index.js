@@ -1,1 +1,3 @@
-export { default } from './UserDetails';
+import UserDetails from './UserDetails';
+
+export default UserDetails;

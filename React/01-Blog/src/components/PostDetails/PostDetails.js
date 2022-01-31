@@ -1,31 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './PostDetails.css';
 
 const PostDetails = () => {
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(false);
   const { postId } = useParams();
+  const [post, setPost] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
       .then(response => response.json())
-      .then(data => setPost(data))
+      .then(post => setPost(post))
       .then(() => setLoading(false));
   }, [postId]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <h2>Loading...</h2>;
+  } else if (
+    post &&
+    Object.keys(post).length === 0 &&
+    Object.getPrototypeOf(post) === Object.prototype
+  ) {
+    return <h2>There is no post with id: {postId}</h2>;
   }
 
-  return post && Object.keys(post).length !== 0 ? (
+  return (
     <>
       <h2>{post.title}</h2>
       <p>{post.body}</p>
     </>
-  ) : (
-    <p>There is no post with id: {postId}.</p>
   );
 };
 

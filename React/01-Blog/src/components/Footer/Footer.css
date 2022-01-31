@@ -1,9 +1,15 @@
 footer {
-  background-color: #c3c3c3;
+  background-color: lightgrey;
+  height: 100px;
+  line-height: 100px;
   text-align: center;
-  padding: 10px;
   position: absolute;
   bottom: 0;
-  width: 100%;
-  height: 100px;
+  min-width: 100vw;
+}
+
+footer p {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
 }

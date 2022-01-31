@@ -1,1 +1,3 @@
-export { default } from './UsersListItem';
+import UsersListItem from './UsersListItem';
+
+export default UsersListItem;

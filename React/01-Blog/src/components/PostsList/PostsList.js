@@ -1,7 +1,14 @@
-import React from 'react';
 import PostsListItem from '../PostsListItem';
-import "./PostsList.css";
+import './PostsList.css';
 
-const PostsList = ({ posts }) => posts.map(post => <PostsListItem key={`post-${post.id}`} post={post} />);
+const PostsList = ({ posts = [] }) => {
+  return (
+    <div className='posts'>
+      {posts.map(post => (
+        <PostsListItem key={`post-${post.id}`} post={post} />
+      ))}
+    </div>
+  );
+};
 
 export default PostsList;

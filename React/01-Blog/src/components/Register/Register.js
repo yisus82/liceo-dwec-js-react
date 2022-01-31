@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Register.css';
 
 const Register = () => {
-  const [formState, setFormState] = useState({});
+  const [error, setError] = useState(null);
+  const [formState, setFormState] = useState({
+    name: '',
+    password: '',
+    password2: '',
+  });
 
   const handleChange = event => {
     setFormState({
@@ -13,22 +18,56 @@ const Register = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (formState.password !== formState.confirmPassword) {
-      console.error('Passwords do not match');
+    setError('');
+    if (formState.password !== formState.password2) {
+      setError("Passwords don't match");
       return;
     }
-    console.log(formState);
+    console.log('formState', formState);
   };
 
-  return <form onSubmit={handleSubmit}>
-    <label>Name: <input onChange={handleChange} type="text" name="name" /></label>
-    <br />
-    <label>Password: <input onChange={handleChange} type="password" name="password" /></label>
-    <br />
-    <label>Confirm Password: <input onChange={handleChange} type="password" name="confirmPassword" /></label>
-    <br />
-    <button type="submit">Submit</button>
-  </form>;
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor='name'>
+          Name
+          <input
+            type='text'
+            name='name'
+            onChange={handleChange}
+            defaultValue={formState.name}
+            required
+          />
+        </label>
+      </div>
+      <div>
+        <label htmlFor='password'>
+          Password
+          <input
+            type='password'
+            name='password'
+            onChange={handleChange}
+            defaultValue={formState.password}
+            required
+          />
+        </label>
+      </div>
+      <div>
+        <label htmlFor='password2'>
+          Confirm Password
+          <input
+            type='password'
+            name='password2'
+            onChange={handleChange}
+            defaultValue={formState.password2}
+            required
+          />
+        </label>
+      </div>
+      {error && <p className='error'>{error}</p>}
+      <button type='submit'>Register</button>
+    </form>
+  );
 };
 
 export default Register;

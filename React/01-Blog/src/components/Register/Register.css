@@ -1,8 +1,12 @@
+.error {
+  color: red;
+}
+
 form {
   width: 500px;
   margin: 20px auto;
 }
 
-input {
-  margin: 10px;
+div {
+  margin: 20px 0px;
 }

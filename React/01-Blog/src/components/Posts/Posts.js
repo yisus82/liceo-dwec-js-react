@@ -1,23 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import useQuery from '../../hooks/useQuery';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import PostsList from '../PostsList';
 import './Posts.css';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
-  const query = useQuery();
-  const userId = +query.get("userId");
+  const [loading, setLoading] = useState(false);
+  const [searchParams] = useSearchParams();
+  const userId = +searchParams.get('userId');
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts').then((response) => response.json()).then(data => setPosts(data));
-  }, []);
+    setLoading(true);
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(posts => setPosts(userId ? posts.filter(post => post.userId === userId) : posts))
+      .then(() => setLoading(false));
+  }, [userId]);
 
-  return <>
-    <h2>Posts</h2>
-    <div className="posts">
-      <PostsList posts={userId ? posts.filter(post => post.userId === userId) : posts} />
-    </div>
-  </>;
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+
+  return (
+    <>
+      <h2>Posts</h2>
+      <div>{posts.length === 0 ? <p>No posts</p> : <PostsList posts={posts} />}</div>
+    </>
+  );
 };
 
 export default Posts;
