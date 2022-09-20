@@ -17,29 +17,28 @@ let randomNumber = generateRandomNumber(min, max);
 console.log(randomNumber);
 
 const endGame = () => {
+  userNumberField.value = '';
   submitButton.disabled = true;
   newNumberButton.style.display = 'initial';
 };
 
 const checkNumber = number => {
-  if (number < randomNumber) {
+  if (number === randomNumber) {
+    message.innerHTML = `Random number guessed correctly in ${currentAttempts} attempt(s)!`;
+    endGame();
+  } else if (currentAttempts >= maxAttempts) {
+    message.innerHTML = `Random number was ${randomNumber}`;
+    endGame();
+  } else if (number < randomNumber) {
     message.innerHTML = 'Random number is higher';
   } else if (number > randomNumber) {
     message.innerHTML = 'Random number is lower';
-  } else {
-    message.innerHTML = `Random number guessed correctly in ${currentAttempts} attempt(s)!`;
-    endGame();
-  }
-  if (currentAttempts >= maxAttempts) {
-    message.innerHTML = `Random number was ${randomNumber}`;
-    endGame();
-  }
+  } 
 };
 
 const submitNumber = event => {
   event.preventDefault();
   const userNumber = +userNumberField.value;
-  userNumberField.value = '';
   currentAttempts++;
   attemptList.innerHTML += `<li>${userNumber}</li>`;
   checkNumber(userNumber);
