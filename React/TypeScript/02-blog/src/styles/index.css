@@ -1,0 +1,58 @@
+@import './reset.css';
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+main h2 {
+  font-size: 2rem;
+}
+
+.no-items {
+  font-size: 1.5rem;
+  color: #666;
+}
+
+form {
+  width: 500px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-field {
+  margin: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 400px;
+}
+
+.form-field label {
+  font-size: 1.2rem;
+}
+
+#register {
+  background-color: blue;
+  color: white;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 200px;
+  font-weight: bold;
+}
